@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       user_id: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
       },
       origin:{
         type: DataTypes.STRING
@@ -27,13 +27,20 @@ module.exports = (sequelize, DataTypes) => {
       rating:{
         type: DataTypes.INTEGER
       }
-    }
+    },
+    // {
+    //   timstamps: false
+    // }
   );
   notes.associate = function(models){
     notes.belongsTo(models.users, {
       foreignKey:'user_id'
     })
-    //flavor table과의 연결 부분 추가 예정
+  
+    notes.belongsToMany(models.flavors,{
+      through:'notes_flavors',
+      foreignKey:'notes_id'
+    })
   };
   return notes;
 }

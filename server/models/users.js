@@ -17,13 +17,16 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false
       }
-    }
+    },
+    // {
+    //   timstamps: false
+    // }
   );
   users.associate = function(models){
     users.hasMany(models.notes, {//user:notes = 1:N 
       foreignKey:'user_id',//users의 pk는 notes의 fk
-      as:'notes'
     })
   }
   return users;
 }
+

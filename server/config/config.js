@@ -4,7 +4,7 @@ require('dotenv').config();
   const development =  {
     username: "root",
     password: process.env.DATABASE_PASSWORD,
-    database: "caffeine_development",
+    database: "caffeine",
     host: "127.0.0.1",
     dialect: "mysql",
     logging: false
@@ -13,7 +13,7 @@ require('dotenv').config();
   const test = {
     username: "root",
     password: process.env.DATABASE_PASSWORD,
-    database: "caffeine_test",
+    database: "caffeine",
     host: "127.0.0.1",
     dialect: "mysql",
     logging: false
@@ -22,7 +22,7 @@ require('dotenv').config();
   const production = {
     username: "root",
     password: process.env.DATABASE_PASSWORD,
-    database: "caffeine_production",
+    database: "caffeine",
     host: "127.0.0.1",
     dialect: "mysql",
     logging: false
