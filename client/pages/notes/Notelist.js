@@ -1,45 +1,34 @@
-import * as React from "react";
-import { View, Text } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import React from "react";
+import { StyleSheet, View, Text, Button } from "react-native";
+import Fakedatanotes from "./FakeDatanotes";
 
-function NoteListScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Note Screen</Text>
-      <Button
-        title="새 노트 추가"
-        onPress={() => navigation.navigate("Addnote")}
-      />
-    </View>
-  );
-}
+export default ({ navigation }) => (
+  //navigate로 라우팅 가능하다 이름을 항상 적어준다.
+  <View style={{ flex: 1, backgroundColor: "#F8F8F5" }}>
+    <Text>Cupping Note</Text>
+    <Button
+      title="새 노트 추가하기"
+      onPress={() => navigation.navigate("Addnote")}
+    />
+    {Fakedatanotes.map((data) => (
+      <View key={data.id}>
+        <Text style={styles.textstyle}>
+          {data.name}, {data.price},{data.rating}
+        </Text>
+      </View>
+    ))}
+  </View>
+);
 
-function AddnoteScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Details Screen</Text>
-      <Button title="수정하기" onPress={() => navigation.push("Modifynote")} />
-      <Button
-        title="삭제하기"
-        onPress={() => navigation.navigate("Deletenote")}
-      />
-      <Button title="뒤로가기" onPress={() => navigation.goBack()} />
-    </View>
-  );
-}
-
-const Stack = createStackNavigator();
-
-function Notelist() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Notelist" component={NoteListScreen} />
-        <Stack.Screen name="Addnote" component={AddnoteScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
-
-export default Notelist;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  textstyle: {
+    justifyContent: "center",
+    margin: 10,
+  },
+});
