@@ -1,10 +1,3 @@
-// 토큰 없으면 401, 있으면 verify///
-// path사용-> 쿼리 쓰기로///
-// 전체를 다 불러오고, 그 중 특정 하나만을 필터링한다=> 쿼리파라미터 //원준님, 비해피예시///
-// 바로 식별가능하게 => path. 이게 쿼리보다 좀 더 직관적인 느낌은 있는 것 같다
-// => 쿼리파라미터 사용하기///
-//주소: notes/allNotes ///get
-//try,catch try 부분은 굳이 안 쓰고 catch만 써도 될 것 같다.
 const { notes } = require('../../models');
 const jwt = require('jsonwebtoken');
 
