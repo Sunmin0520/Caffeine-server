@@ -1,6 +1,7 @@
 //쿼리파라미터로 쿼리로 보내진 정보에 대해서만 필터링을 한다.
 const { notes } = require('../../models');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 module.exports = {
   get: (req,res) => {
