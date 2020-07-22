@@ -18,7 +18,7 @@ function Regionlist({ navigation }) {
                   title={data.name}
                   style={styles.textstyle}
                   onPress={() => {
-                    navigation.navigate("Region")
+                    navigation.navigate("Region", { region_id: data.id })
                   }}
                 ></Button>
               </View>
