@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./pages/user/Splash.png",
+      "image": "./pages/user/Untitled.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -19,6 +19,10 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "android": {
+      "package": "example.expo.googlesignin",
+      "googleServicesFile": "./google-services.json"
     }
   }
 }
