@@ -9,7 +9,7 @@ function Regionlist({ navigation }) {
       <Text style={styles.textstyle}>어떤 지역의 카페정보가 궁금하신가요?</Text>
       <View>
         {axios
-          .get("http://localhost:4000/region")
+          .get("http://localhost:3001/cafes/regions")
           .then((res) =>
             res.map((data) => (
               <View key={data.id}>
