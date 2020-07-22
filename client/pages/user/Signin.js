@@ -1,23 +1,15 @@
 import React, { useState } from "react";
-import { Text, Button, View, StyleSheet, TextInput } from "react-native";
+import { Text, Button, View, StyleSheet, TextInput, Image } from "react-native";
 import axios from "axios";
-// import * as Google from "expo-google-app-auth";
 export default function Signin({ navigation }) {
   const [isLogin, setIsLogin] = useState(false); // 로그인 핸들링
   const [email, setEmail] = useState(""); // 이메일 인풋값 핸들링
   const [password, setPassword] = useState(""); // 패스워드 인풋값 핸들링
-  // const { type, accessToken, user } = await Google.logInAsync(config);
-
-  // if (type === 'success') {
-  //   // Then you can use the Google REST API
-  //   let userInfoResponse = await fetch('https://www.googleapis.com/userinfo/v2/me', {
-  //     headers: { Authorization: `Bearer ${accessToken}` },
-  //   });
-  // }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.inputext}>Welcome!</Text>
+      <Image style={styles.tinyLogo} source={require("./logo.png")} />
+      <Text></Text>
       <TextInput
         label="Email"
         placeholder="   Email"
@@ -32,7 +24,7 @@ export default function Signin({ navigation }) {
         onChangeText={(password) => setPassword(password)}
       />
       <Button
-        color="#ED4264"
+        style={styles.appButtonContainer}
         title={isLogin ? "로그인 되었습니다" : "Login"}
         onPress={() => {
           const data = JSON.stringify({
@@ -80,18 +72,19 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   input: {
-    width: 350,
-    height: 40,
+    width: 300,
+    height: 44,
     marginBottom: 10,
     backgroundColor: "#EAEAEA",
     borderRadius: 10,
   },
-  inputext: {
-    textAlign: "center",
-    fontWeight: "bold",
-    marginBottom: 10,
-  },
   signup: {
-    marginTop: 10,
+    marginTop: 20,
+  },
+  tinyLogo: {
+    width: 220,
+    height: 220,
+    marginTop: -50,
+    marginBottom: 20,
   },
 });
