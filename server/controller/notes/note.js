@@ -14,7 +14,7 @@ module.exports = {
       .findOne({
         where: { 
           user_id: userId,
-          note_id: noteId//notes table의 note_id와 쿼리로 보내진 내용인 noteId가 일치할 때
+          id: noteId//notes table의 id와 쿼리로 보내진 내용인 noteId가 일치할 때
         }
       })
       .then(data => {
