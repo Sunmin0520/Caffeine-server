@@ -29,7 +29,7 @@ app.get('/', (req,res) => {
 
 //라우팅
 app.use('/users', usersRouter);
-app.use('/cafes', cafesRouter);
+//app.use('/cafes', cafesRouter);
 app.use('/notes', notesRouter);
 
 app.set('port',port);
