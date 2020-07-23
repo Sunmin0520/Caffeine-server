@@ -1,6 +1,8 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import Notelist from "../pages/notes/Notelist";
+import Noteinfo from "../pages/notes/Noteinfo";
+import Modifynote from "../pages/notes/Modifynote";
 import Tabs from "./Tabs";
 
 const Stack = createStackNavigator();
@@ -25,5 +27,7 @@ export default () => (
   >
     <Stack.Screen name="Tab" component={Tabs} />
     <Stack.Screen name="Notelist" component={Notelist} />
+    <Stack.Screen name="Noteinfo" component={Noteinfo} />
+    <Stack.Screen name="Modifynote" component={Modifynote} />
   </Stack.Navigator>
 );
