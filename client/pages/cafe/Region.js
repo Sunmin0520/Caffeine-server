@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 import axios from "axios";
 
@@ -6,6 +6,36 @@ const Region = ({ route, navigation }) => {
   //Regionlist에서 선택한 지역의 카페 목록을 가져옵니다.
   const city = route.params.city; //Regionlist에서 route로 받은 도시이름을 가져옵니다.
   const region_id = route.params.region_id;
+  const user_id = route.params.user_id;
+
+  const [cafename, Setcafename] = useState("");
+  const [address, Setadress] = useState("");
+  const [cafe_id, Setcafe_id] = useState(1);
+
+  const getRegionCall = () => {
+    //get cafes table
+    axios
+      .get(`http://localhost:3001/cafes/region?region_id=${region_id}`)
+      .then((res) => {
+        return JSON.stringify(res.data);
+      })
+      .then((data) => {
+        data.map((result) => {
+          key = result.id;
+          Setcafename(result.name),
+            Setadress(result.address),
+            Setcafe_id(result.id);
+        });
+      })
+      .catch(function (error) {
+        console.log(error); //401{result:"token expired"} 수정예정
+      });
+  };
+
+  useEffect(() => {
+    getRegionCall();
+  });
+
   return (
     <View style={styles.container}>
       <Text>{city}</Text>
@@ -15,28 +45,19 @@ const Region = ({ route, navigation }) => {
           navigation.navigate("Addcafe");
         }}
       />
-      {axios
-        .get(`http://localhost:3001/cafes/regions/${region_id}`)
-        .then((res) => {
-          //200 ok 선택한 지역의 모든 카페를 가져옵니다
-          res
-            .map((data) => (
-              <View key={data.id}>
-                <Text
-                  onPress={() => {
-                    navigation.navigate("Cafeinfo", { cafe_id: data.id });
-                  }}
-                >
-                  {data.name}
-                </Text>
-                <Text>{data.address}</Text>
-                <Text>{rating_average}</Text>
-              </View>
-            ))
-            .catch(function (error) {
-              console.log(error); //404{result:"region not found"}
-            });
-        })}
+      <Text
+        onPress={() => {
+          navigation.navigate("Cafeinfo", {
+            cafe_id: cafe_id,
+            city: city,
+            cafename: cafename,
+            address: address,
+          });
+        }}
+      >
+        {cafename}
+      </Text>
+      <Text>{address}</Text>
     </View>
   );
 };
