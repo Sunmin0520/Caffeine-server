@@ -22,15 +22,15 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER
       },
       feature:{
-        type: DataTypes.STRING
+        type: DataTypes.STRING(1234)
       },
       rating:{
         type: DataTypes.INTEGER
       }
     },
-    // {
-    //   timstamps: false
-    // }
+    {
+      timstamps: false
+    }
   );
   notes.associate = function(models){
     notes.belongsTo(models.users, {
@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
   
     notes.belongsToMany(models.flavors,{
       through:'notes_flavors',
-      foreignKey:'notes_id'
+      foreignKey:'note_id'
     })
   };
   return notes;

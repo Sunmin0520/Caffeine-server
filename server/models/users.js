@@ -18,9 +18,9 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false
       }
     },
-    // {
-    //   timstamps: false
-    // }
+    {
+      timstamps: false
+    }
   );
   users.associate = function(models){
     users.hasMany(models.notes, {//user:notes = 1:N 

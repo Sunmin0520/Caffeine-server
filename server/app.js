@@ -7,8 +7,6 @@ const cors = require('cors');
 const morgan = require('morgan');
 
 const usersRouter = require('./routes/users');
-const cafesRouter = require('./routes/cafes')
-const notesRouter = require('./routes/notes');
 
 const app = express();
 const port = 3001;
@@ -29,8 +27,6 @@ app.get('/', (req,res) => {
 
 //라우팅
 app.use('/users', usersRouter);
-app.use('/cafes', cafesRouter);
-app.use('/notes', notesRouter);
 
 app.set('port',port);
 app.listen(app.get('port'), () => {

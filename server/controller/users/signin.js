@@ -6,20 +6,21 @@ require('dotenv').config();
 module.exports = {
   post: (req,res) => {
     const { email, password } = req.body;
-
+    console.log(email, password);
     users
     .findOne({ where: { email: email }})
     .then(user => {
       if(user){
+        console.log('유저',user)
         if(user.dataValues.password === password){//db에 저장된 password = 유저가 입력한 password 일 때
           let payload = {id: user.id};
           let secret = process.env.JWT_SECRET;
-          jwt.sign(payload, secret, {expires:'2h'},(err,token) => {
+          jwt.sign(payload, secret, {expiresIn:'2h'},(err,token) => {
             if(err){
               res.status(500).send(err);
             } else {
               res.cookie('token',token);
-              res.status(201).json({id: user.dataValues.id})
+              res.status(201).json(user.dataValues)
             }
           })
         } 
