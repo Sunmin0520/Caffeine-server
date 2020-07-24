@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  const notes = sequelize.define(
-    'notes',
+  const note = sequelize.define(
+    'note',
     {
       name: {
         type: DataTypes.STRING,
@@ -22,25 +22,25 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER
       },
       feature:{
-        type: DataTypes.STRING
+        type: DataTypes.STRING(1234)
       },
       rating:{
         type: DataTypes.INTEGER
       }
     },
-    // {
-    //   timstamps: false
-    // }
+    {
+      timstamps: false
+    }
   );
-  notes.associate = function(models){
-    notes.belongsTo(models.users, {
+  note.associate = function(models){
+    note.belongsTo(models.user, {
       foreignKey:'user_id'
     })
   
-    notes.belongsToMany(models.flavors,{
-      through:'notes_flavors',
-      foreignKey:'notes_id'
+    note.belongsToMany(models.flavor,{
+      through:'note_flavor',
+      foreignKey:'note_id'
     })
   };
-  return notes;
+  return note;
 }

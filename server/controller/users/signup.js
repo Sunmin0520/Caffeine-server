@@ -1,10 +1,10 @@
-const { users } = require('../../models');
+const { user } = require('../../models');
 
 module.exports = {
   post: (req,res) => {
     const { username, email, password } = req.body;
 
-    users
+    user
     .findOrCreate({ 
       where: { email: email },
       defaults: {

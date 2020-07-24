@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  const users = sequelize.define( //models/users를 정의
-    'users',
+  const user = sequelize.define( //models/user를 정의
+    'user',
     {
       username: {
         type: DataTypes.STRING,
@@ -18,15 +18,14 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false
       }
     },
-    // {
-    //   timstamps: false
-    // }
+    {
+      timstamps: false
+    }
   );
-  users.associate = function(models){
-    users.hasMany(models.notes, {//user:notes = 1:N 
-      foreignKey:'user_id',//users의 pk는 notes의 fk
+  user.associate = function(models){
+    user.hasMany(models.note, {//user:note = 1:N 
+      foreignKey:'user_id',//user의 pk는 note의 fk
     })
   }
-  return users;
+  return user;
 }
-

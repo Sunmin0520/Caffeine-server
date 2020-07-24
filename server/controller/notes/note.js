@@ -1,29 +1,32 @@
 //쿼리파라미터로 쿼리로 보내진 정보에 대해서만 필터링을 한다.
-const { notes } = require('../../models');
-//const jwt = require('jsonwebtoken');
+const { notes, flavors } = require('../../models');
 require('dotenv').config();
 
 module.exports = {
   get: (req,res) => {
-    const { note_id } = req.query;
+    const { notes_id } = req.query;
 
     notes
     .findAll({
-      where: { id : note_id },
+      where: { id : notes_id },
       include: [{ model: flavors }]
     })
     .then((data) => {
       if(data){//특정 note_id를 가진 한 note에 들어가있는 모든 정보
+        console.log('데이터',data)//note=1인 것만 잘 나옴!!
+        console.log('0번째',data[0])//=dataValues
+        console.log('data[0].name',data[0].name)//모카
         const result = {
-          id: data.id,
-          name: data.name,
-          origin: data.origin,
-          mall: data.mall,
-          price: data.price,
-          feature: data.feature,
-          rating: data.rating,
-          flavors : data.flavors.map((ele) => ele.name)
+          id: data[0].id,
+          name: data[0].name,
+          origin: data[0].origin,
+          mall: data[0].mall,
+          price: data[0].price,
+          feature: data[0].feature,
+          rating: data[0].rating,
+          flavors : data[0].flavors.map((ele) => ele.name)///다 잘되는데 이건 안 받아와짐!!
         }
+        console.log('레절트',result)
         res.status(200).json(result);
       } else {
         res.status(403).json({ message: 'unvalid note_id'})

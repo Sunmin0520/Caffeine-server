@@ -12,7 +12,8 @@ module.exports = {
       notes
       .findAll({
         where: { 
-          user_id: userId }//users table의 user_id와 지금 로그인한 유저의 id(userId)가 같을 경우 notes의 모든 자료 find
+          user_id: userId //users table의 user_id와 지금 로그인한 유저의 id(userId)가 같을 경우 notes의 모든 자료 find
+        }
       })
       .then(data => {
         res.status(200).json(data);
