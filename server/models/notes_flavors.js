@@ -20,20 +20,20 @@ module.exports = (sequelize, DataTypes) => {
   const notes_flavors = sequelize.define(
     'notes_flavors',
     {
-      notes_id: DataTypes.INTEGER,
-      flavors_id: DataTypes.INTEGER
+      note_id: DataTypes.INTEGER,
+      flavor_id: DataTypes.INTEGER
     }
   );
   notes_flavors.associate = function(models){
     notes_flavors.belongsTo(models.notes, {
-      foreignKey:'notes_id'
+      foreignKey:'note_id'
     });
     notes_flavors.belongsTo(models.flavors, {
-      foreignKey: 'flavors_id'
+      foreignKey: 'flavor_id'
     })
+  },
+  {
+    timstamps: false
   }
-  // {
-  //   timstamps: false
-  // }
   return notes_flavors;
 }; 

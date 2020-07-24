@@ -8,14 +8,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      notes_id: {
+      note_id: {
         type: Sequelize.INTEGER,
         references: {//notes와의 관계설정(note.belongsToMany.flavor)
           model: 'notes',
           key: 'id'
         }
       },
-      flavors_id: {
+      flavor_id: {
         type: Sequelize.INTEGER,
         references: {//flavor와의 관계설정(flavors.belongsToMany.notes)
           model: 'flavors',
@@ -23,11 +23,9 @@ module.exports = {
         }
       },
       createdAt: {
-        allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
         type: Sequelize.DATE
       }
     });

@@ -9,14 +9,14 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false
       }
     },
-    // {
-    //   timstamps: false
-    // }
+    {
+      timstamps: false
+    }
   );
   flavors.associate = function (models) {
     flavors.belongsToMany(models.notes, {
       through: 'notes_flavors',
-      foreignKey: 'flavors_id'
+      foreignKey: 'flavor_id'
     });
   };
   return flavors;

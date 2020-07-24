@@ -30,7 +30,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       feature: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(1234)
       },
       rating: {
         type: Sequelize.INTEGER
