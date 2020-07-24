@@ -6,6 +6,7 @@ const Region = ({ route, navigation }) => {
   //Regionlist에서 선택한 지역의 카페 목록을 가져옵니다.
   const city = route.params.city; //Regionlist에서 route로 받은 도시이름을 가져옵니다.
   const region_id = route.params.region_id;
+  const user_id = route.params.user_id;
 
   const [cafename, Setcafename] = useState("");
   const [address, Setadress] = useState("");
