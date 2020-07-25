@@ -6,16 +6,19 @@ module.exports = (sequelize, DataTypes) => {
     {
       username: {
         type: DataTypes.STRING,
-        allowNull: false 
       },
       email: {
         type: DataTypes.STRING,
-        unique: true, // 이미 등록된 이메일로 새롭게 가입하는 사용자가 없도록
-        allowNull: false
+        unique: true // 이미 등록된 이메일로 새롭게 가입하는 사용자가 없도록
       },
       password: {
         type: DataTypes.STRING,
-        allowNull: false
+      },
+      google:{
+        type: DataTypes.STRING,
+      },
+      facebook:{
+        type: DataTypes.STRING
       }
     },
     {
