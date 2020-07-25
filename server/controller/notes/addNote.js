@@ -54,7 +54,7 @@ module.exports = {//postNote와 postflavor를 합쳐서 읽어와야함
           })
       })
       .catch(err => {
-        res.status(400).send(err);
+        res.status(404).send(err);
       })
     }
   },
