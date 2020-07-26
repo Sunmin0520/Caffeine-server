@@ -26,8 +26,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
   users.associate = function(models){
-    users.hasMany(models.notes, {//user:notes = 1:N 
-      foreignKey:'user_id',//users의 pk는 notes의 fk
+    users.hasMany(models.notes, {
+      foreignKey:'user_id',
+    })
+    users.hasMany(models.cafes, {
+      foreignKey:'user_id',
     })
   }
   return users;
