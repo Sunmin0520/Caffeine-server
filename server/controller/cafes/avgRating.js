@@ -22,5 +22,8 @@ module.exports = {
       .then((avrRating) => {
         res.status(200).send(JSON.stringify(Math.round(avrRating)));
       })
+      .catch((err) => {
+        res.status(404).send(err);
+      })
   }
 }
