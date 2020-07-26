@@ -1,3 +1,4 @@
 module.exports = {
-  regionList: require('./regionList')
+  regionList: require('./regionList'),
+  cafeList: require('./cafeList')
 }

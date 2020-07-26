@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     users.hasMany(models.notes, {
       foreignKey:'user_id',
     })
-    users.hasMany(models.cafes, {
+    users.hasMany(models.reviews, {
       foreignKey:'user_id',
     })
   }
