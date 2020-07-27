@@ -5,5 +5,4 @@ module.exports = {
   addCafe: require('./addCafe'),
   addReview: require('./addReview'),
   avgRating: require('./avgRating')
-
 }

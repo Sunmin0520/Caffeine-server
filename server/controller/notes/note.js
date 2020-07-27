@@ -1,13 +1,7 @@
 const { notes, notes_flavors } = require('../../models');
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
 
 module.exports = {
   get: (req, res) => {
-    let token = req.cookies.token;
-    if(!token){
-      res.status(401).json({result:"token expired"});
-    } else {
       let note_id = req.params.note_id;
 
       notes
@@ -44,5 +38,4 @@ module.exports = {
         res.status(404).send(err));
       })
     }
-  }
 }
