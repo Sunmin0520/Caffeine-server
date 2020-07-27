@@ -3,5 +3,6 @@ module.exports = {
   noteList: require('./noteList'),
   note: require('./note'),
   deleteNote: require('./deleteNote'),
-  modifyNote: require('./modifyNote')
+  modifyNote: require('./modifyNote'),
+  flavors: require('./flavors')
 }

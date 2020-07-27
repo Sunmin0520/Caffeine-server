@@ -1,13 +1,9 @@
-const { notes } = require('../../models');
+const { regions } = require('../../models');
 
 module.exports = {
   get: (req,res) => {
-      notes
-      .findAll({
-        where: { 
-          user_id: req.user.id
-        }
-      })
+      regions
+      .findAll()
       .then((data) => {
         res.status(200).json(data);
       })

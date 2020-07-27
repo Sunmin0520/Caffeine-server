@@ -8,6 +8,7 @@ const morgan = require('morgan');
 
 const usersRouter = require('./routes/users');
 const notesRouter = require('./routes/notes');
+const cafesRouter = require('./routes/cafes');
 
 const app = express();
 const port = 3001;
@@ -27,7 +28,8 @@ app.get('/', (req,res) => {
 })
 
 app.use('/users', usersRouter);
-app.use('/notes',notesRouter);
+app.use('/notes', notesRouter);
+app.use('/cafes', cafesRouter);
 
 app.set('port',port);
 app.listen(app.get('port'), () => {
