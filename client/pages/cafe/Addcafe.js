@@ -71,6 +71,7 @@ const Addreview = ({ route, navigation }) => {
       {/* 주소 입력  */}
       <Text>원두를 판매하나요?</Text>
       {/* 판매여부 버튼 생성 */}
+      <Button></Button>
       <Text>
         인스타그램 계정
         <TextInput
