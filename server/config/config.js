@@ -6,8 +6,9 @@ require('dotenv').config();
     password: process.env.DATABASE_PASSWORD,
     database: "caffeine",
     host: "caffeine.cxc8xblv1vqn.ap-northeast-2.rds.amazonaws.com",
+    port: 13306,
     dialect: "mysql",
-    logging: false
+    logging: false,
   };
 
   const test = {
