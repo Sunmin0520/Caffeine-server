@@ -10,8 +10,10 @@ const Addreview = ({ route, navigation }) => {
   const [address, Setaddress] = useState("");
   const [regionid, Setregionid] = useState("");
   const [region, Setregion] = useState("");
-  const [sell_beans, Setsell_beans] = useState(false);
+  const [sell_beans, Setsell_beans] = useState(true);
   const [instagram_account, Setinstagram_account] = useState("");
+  const [Yes, SetYes] = useState("#ffa9a3");
+  const [No, SetNo] = useState("#e0e0e0");
 
   const getRegionCall = () => {
     axios
@@ -52,8 +54,16 @@ const Addreview = ({ route, navigation }) => {
       });
   };
 
-  const handleSellBeans = () => {
+  const handleSellYes = () => {
+    SetNo("#e0e0e0");
+    SetYes("#ffa9a3");
     Setsell_beans(true);
+  };
+
+  const handleSellNo = () => {
+    Setsell_beans(false);
+    SetYes("#e0e0e0");
+    SetNo("#ffa9a3");
   };
 
   return (
@@ -71,7 +81,20 @@ const Addreview = ({ route, navigation }) => {
       {/* 주소 입력  */}
       <Text>원두를 판매하나요?</Text>
       {/* 판매여부 버튼 생성 */}
-      <Button></Button>
+      <Button
+        color={Yes}
+        title={"Yes"}
+        onPress={() => {
+          handleSellYes();
+        }}
+      />
+      <Button
+        color={No}
+        title={"No"}
+        onPress={() => {
+          handleSellNo();
+        }}
+      />
       <Text>
         인스타그램 계정
         <TextInput
