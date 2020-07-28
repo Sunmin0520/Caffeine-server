@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Button, TextInput } from "react-native";
 import axios from "axios";
 import StarRating from "react-native-star-rating";
 
-const Addreview = ({ route, navigation }) => {
+const Addcafe = ({ route, navigation }) => {
   //새로운 카페를 등록할 수 있습니다.
 
   const [name, Setname] = useState("");
@@ -128,4 +128,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Addreview;
+export default Addcafe;
