@@ -17,23 +17,22 @@ require('dotenv').config();
   //   dialect: "mysql",
   //   logging: false,
   // };
-  
-  // const development = {
-  //   username: "root",
-  //   password: process.env.DATABASE_PASSWORD,
-  //   database: "caffeine",
-  //   host: "127.0.0.1",
-  //   dialect: "mysql",
-  //   logging: false
-  // };
+  const test = {
+    username: "root",
+    password: process.env.DATABASE_PASSWORD,
+    database: "caffeine",
+    host: "127.0.0.1",
+    dialect: "mysql",
+    logging: false
+  };
 
-  // const test = {
-  //   username: "root",
-  //   password: process.env.DATABASE_PASSWORD,
-  //   database: "caffeine",
-  //   host: "127.0.0.1",
-  //   dialect: "mysql",
-  //   logging: false
-  // };
+  const production = {
+    username: "root",
+    password: process.env.DATABASE_PASSWORD,
+    database: "caffeine",
+    host: "127.0.0.1",
+    dialect: "mysql",
+    logging: false
+  };
 
 module.exports = { development, test, production};
