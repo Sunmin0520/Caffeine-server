@@ -2,11 +2,24 @@
 import React, { useState } from "react";
 import { Text, Button, View, StyleSheet, TextInput } from "react-native";
 import axios from "axios";
+
 export default function Signup() {
   const [email, setEmail] = useState(""); // 이메일 인풋값 핸들링
   const [nickname, setNickname] = useState(""); // 닉네임 인풋값 핸들링
   const [password, setPassword] = useState(""); // 패스워드 인풋값 핸들링
   const [passwordCheck, setPasswordCheck] = useState(""); // 패스워드체크 인풋값 핸들링
+
+  function doesPasswordMatch() {
+    return password === passwordCheck;
+  }
+
+  function renderFeedbackMessage() {
+    if (passwordCheck) {
+      if (!doesPasswordMatch()) {
+        return <Text>패스워드가 일치하지 않습니다!!</Text>;
+      }
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -33,9 +46,11 @@ export default function Signup() {
       <TextInput
         label="Password"
         placeholder="   Password Check"
+        secureTextEntry={true}
         style={styles.input}
         onChangeText={(passwordCheck) => setPasswordCheck(passwordCheck)}
       />
+      <View>{renderFeedbackMessage()}</View>
       <Button
         title="회원가입"
         onPress={() => {
