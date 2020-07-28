@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, Text, StyleSheet, Button, Alert } from "react-native";
+import { View, StyleSheet, Alert } from "react-native";
 
 const Logout = ({ navigation }) => {
   useEffect(() => {
@@ -14,7 +14,7 @@ const Logout = ({ navigation }) => {
         {
           text: "Cancel",
           onPress: () => navigation.navigate("Main"),
-          // style: "cancel",
+          style: "cancel",
         },
         { text: "OK", onPress: () => navigation.navigate("userInfo") },
       ],
