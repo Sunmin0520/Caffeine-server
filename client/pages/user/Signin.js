@@ -57,9 +57,6 @@ export default function Signin({ navigation }) {
             });
         }}
       />
-      <Text style={styles.signup} onPress={() => navigation.navigate("Signup")}>
-        회원이 아니신가요?
-      </Text>
     </View>
   );
 }

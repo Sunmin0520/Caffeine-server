@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Text, Button, View, StyleSheet, TextInput } from "react-native";
 import axios from "axios";
 
-export default function Signup() {
+export default function Signup({ navigation }) {
   const [email, setEmail] = useState(""); // 이메일 인풋값 핸들링
   const [nickname, setNickname] = useState(""); // 닉네임 인풋값 핸들링
   const [password, setPassword] = useState(""); // 패스워드 인풋값 핸들링
@@ -79,6 +79,7 @@ export default function Signup() {
             })
             .catch((error) => {
               console.log(`${error} 에러 ${data}를 보내지 못했습니다.`);
+              navigation.navigate("Signin");
             });
         }}
       />
