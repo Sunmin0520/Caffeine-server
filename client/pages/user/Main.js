@@ -9,14 +9,14 @@ export default function Signin({ navigation }) {
         title="카페 찾기"
         style={styles.input}
         onPress={() => {
-          navigation.navigate("Noteinfo");
+          navigation.navigate("Regionlist");
         }}
       />
       <Button
         title="커피콩콩콩"
         style={styles.input}
         onPress={() => {
-          console.log("콩으로 이동");
+          navigation.navigate("Addnote");
         }}
       />
     </View>

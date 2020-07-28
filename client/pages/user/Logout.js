@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, StyleSheet, Alert } from "react-native";
+import { View, StyleSheet, Button, Alert } from "react-native";
 
 const Logout = ({ navigation }) => {
   useEffect(() => {
@@ -13,15 +13,19 @@ const Logout = ({ navigation }) => {
       [
         {
           text: "Cancel",
-          onPress: () => navigation.navigate("Main"),
+          onPress: () => navigation.goBack(),
           style: "cancel",
         },
-        { text: "OK", onPress: () => navigation.navigate("userInfo") },
+        { text: "OK", onPress: () => navigation.popToTop() },
       ],
       { cancelable: false }
     );
 
-  return <View style={styles.container}></View>;
+  return (
+    <View style={styles.container}>
+      <Button title={"Log out"} onPress={logoutFunc} />
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
