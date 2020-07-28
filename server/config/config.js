@@ -10,7 +10,7 @@ require('dotenv').config();
 
   // const development =  {
   //   username: "sunmin",
-  //   password: process.env.DATABASE_PASSWORD2,
+  //   password: process.env.DATABASE_PASSWORD,
   //   database: "caffeine",
   //   host: "caffeine.cxc8xblv1vqn.ap-northeast-2.rds.amazonaws.com",
   //   port: 3306,
