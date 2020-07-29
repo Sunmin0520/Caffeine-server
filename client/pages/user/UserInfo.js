@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Text, Button, View, StyleSheet, TextInput } from "react-native";
 
-export default function userInfo({ navigation }) {
+export default function UserInfo({ navigation }) {
   return (
     <View style={styles.container}>
       <Button title="Google 로그인"></Button>
@@ -26,18 +26,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-  },
-  input: {
-    width: 350,
-    height: 40,
-    marginBottom: 10,
-    backgroundColor: "#EAEAEA",
-    borderRadius: 10,
-  },
-  inputext: {
-    width: 200,
-    textAlign: "center",
-    fontWeight: "bold",
-    marginBottom: 10,
   },
 });

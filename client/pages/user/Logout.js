@@ -4,11 +4,16 @@ import { View, StyleSheet, Button, Alert, AsyncStorage } from "react-native";
 const Logout = ({ navigation }) => {
   useEffect(() => {
     logoutFunc();
+    testFn();
   });
+  const testFn = async () => {
+    const value = await AsyncStorage.getItem("userToken");
+    console.log("로그아웃시 해당 토큰값을 삭제합니다: ", value);
+  };
 
-  const _logout = async () => {
+  const removeToken = async () => {
     await AsyncStorage.clear();
-    navigation.navigate("userInfo");
+    navigation.navigate("UserInfo");
   };
 
   const logoutFunc = () =>
@@ -24,7 +29,7 @@ const Logout = ({ navigation }) => {
         {
           text: "OK",
           onPress: () => {
-            _logout();
+            removeToken();
           },
         },
       ],
