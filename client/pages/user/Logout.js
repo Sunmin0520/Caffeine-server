@@ -6,6 +6,11 @@ const Logout = ({ navigation }) => {
     logoutFunc();
   });
 
+  const _logout = async () => {
+    await AsyncStorage.clear();
+    navigation.navigate("userInfo");
+  };
+
   const logoutFunc = () =>
     Alert.alert(
       "Log out",
@@ -19,7 +24,7 @@ const Logout = ({ navigation }) => {
         {
           text: "OK",
           onPress: () => {
-            AsyncStorage.clear(), navigation.popToTop();
+            _logout();
           },
         },
       ],
