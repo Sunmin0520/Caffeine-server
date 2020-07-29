@@ -8,7 +8,7 @@ import Signup from "../pages/user/Signup";
 import Main from "../pages/user/Main";
 import Tabs from "./Tabs";
 import userInfo from "../pages/user/userInfo";
-// import Addnote from "../pages/notes/Addnote";
+import Addnote from "../pages/notes/Addnote";
 import Regionlist from "../pages/cafe/Regionlist";
 
 const Stack = createStackNavigator();
@@ -39,7 +39,7 @@ export default () => (
     <Stack.Screen name="Notelist" component={Notelist} />
     <Stack.Screen name="Noteinfo" component={Noteinfo} />
     <Stack.Screen name="Modifynote" component={Modifynote} />
-    {/* <Stack.Screen name="Addnote" component={Addnote} /> */}
+    <Stack.Screen name="Addnote" component={Addnote} />
     <Stack.Screen name="Regionlist" component={Regionlist} />
   </Stack.Navigator>
 );
