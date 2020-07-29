@@ -65,7 +65,7 @@ export default function Signup({ navigation }) {
 
           const config = {
             method: "post",
-            url: "http://localhost:3001/user/signup/",
+            url: "http://13.125.247.226:3001/users/signup",
             headers: {
               "Content-Type": "application/json",
             },
@@ -75,11 +75,13 @@ export default function Signup({ navigation }) {
           axios(config)
             .then((response) => {
               console.log(response.data);
-              console.log("회원가입 성공");
+              alert(
+                `${email}님 회원가입 하셨습니다. 로그인 페이지로 이동합니다.`
+              );
+              navigation.navigate("Signin");
             })
             .catch((error) => {
               console.log(`${error} 에러 ${data}를 보내지 못했습니다.`);
-              navigation.navigate("Signin");
             });
         }}
       />

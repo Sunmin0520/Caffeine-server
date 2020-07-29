@@ -34,7 +34,7 @@ export default () => (
     <Stack.Screen name="userInfo" component={userInfo} />
     <Stack.Screen name="Signin" component={Signin} />
     <Stack.Screen name="Signup" component={Signup} />
-    {/* <Stack.Screen name="Main" component={Main} /> */}
+    <Stack.Screen name="Main" component={Main} />
     <Stack.Screen name="Tab" component={Tabs} />
     <Stack.Screen name="Notelist" component={Notelist} />
     <Stack.Screen name="Noteinfo" component={Noteinfo} />

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Text, Button, View, StyleSheet, TextInput, Image } from "react-native";
 import axios from "axios";
-export default function Signin({ navigation }) {
+export default function Signin({ navigation, route }) {
   const [isLogin, setIsLogin] = useState(false); // 로그인 핸들링
   const [email, setEmail] = useState(""); // 이메일 인풋값 핸들링
   const [password, setPassword] = useState(""); // 패스워드 인풋값 핸들링
@@ -34,7 +34,7 @@ export default function Signin({ navigation }) {
 
           const config = {
             method: "post",
-            url: "http://localhost:3001/user/signin/",
+            url: "http://13.125.247.226:3001/users/signin",
             headers: {
               "Content-Type": "application/json",
             },
@@ -43,14 +43,15 @@ export default function Signin({ navigation }) {
 
           axios(config)
             .then((response) => {
-              console.log(response.data);
-              console.log(`로그인 성공`);
-              setIsLogin(true);
+              console.log(
+                "로그인 성공 토큰값: ",
+                response.data.token,
+                "전체 response data:",
+                response.data
+              );
+              navigation.navigate("Tab");
             })
             .catch((error) => {
-              navigation.navigate("Tab"); // 읽어주세요!
-              //서버와의 연결이 되어있지 않아 우선 로그인에 성공하지 못했을 경우 Main으로 넘어가집니다.
-              //추후 로그인에 성공했을 경우로 바꾸어야 하며 로그인 상태도 같이 넘겨줄 예정입니다.
               console.log(
                 `${error} 에러 ${data}를 보내지 못했습니다. 로그인 상태는 ${isLogin}입니다.`
               );
