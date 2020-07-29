@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Main from "../pages/user/Main";
 import Notelist from "../pages/notes/Notelist";
 import Cafeinfo from "../pages/cafe/Cafeinfo";
+import Logout from "../pages/user/Logout";
 
 const Tabs = createBottomTabNavigator();
 //props에는 navigator 말고도 route가 있는데 우리가 어디에 있는지 알 수 있게 해준다.
@@ -26,6 +27,7 @@ export default ({ navigation, route }) => {
       <Tabs.Screen name="Main" component={Main} />
       <Tabs.Screen name="Cafeinfo" component={Cafeinfo} />
       <Tabs.Screen name="Notelist" component={Notelist} />
+      <Tabs.Screen name="Logout" component={Logout} />
     </Tabs.Navigator>
   );
 };

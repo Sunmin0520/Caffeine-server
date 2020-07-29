@@ -19,10 +19,6 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "android": {
-      "package": "example.expo.googlesignin",
-      "googleServicesFile": "./google-services.json"
     }
   }
 }

@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Text, Button, View, StyleSheet } from "react-native";
 
-export default function Signin() {
+export default function Signin({ navigation, route }) {
   return (
     <View style={styles.container}>
       <Text style={styles.inputext}>Main</Text>
-      <Button title="카페 찾기" style={styles.input} />
-      <Button title="커피콩콩콩" style={styles.input} />
+      <Button
+        title="카페 찾기"
+        style={styles.input}
+        onPress={() => {
+          navigation.navigate("Regionlist");
+        }}
+      />
+      <Button
+        title="커피콩콩콩"
+        style={styles.input}
+        onPress={() => {
+          navigation.navigate("Addnote");
+        }}
+      />
     </View>
   );
 }

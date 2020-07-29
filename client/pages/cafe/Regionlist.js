@@ -29,7 +29,6 @@ function Regionlist({ navigation }) {
   useEffect(() => {
     getRegionList();
   });
-
   return (
     <View style={styles.container}>
       <Text style={styles.textstyle}>어떤 지역의 카페정보가 궁금하신가요?</Text>
