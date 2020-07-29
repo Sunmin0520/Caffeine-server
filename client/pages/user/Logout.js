@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, StyleSheet, Button, Alert } from "react-native";
+import { View, StyleSheet, Button, Alert, AsyncStorage } from "react-native";
 
 const Logout = ({ navigation }) => {
   useEffect(() => {
@@ -16,7 +16,12 @@ const Logout = ({ navigation }) => {
           onPress: () => navigation.goBack(),
           style: "cancel",
         },
-        { text: "OK", onPress: () => navigation.popToTop() },
+        {
+          text: "OK",
+          onPress: () => {
+            AsyncStorage.clear(), navigation.popToTop();
+          },
+        },
       ],
       { cancelable: false }
     );

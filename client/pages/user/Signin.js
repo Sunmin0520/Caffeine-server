@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Text, Button, View, StyleSheet, TextInput, Image } from "react-native";
+import {
+  Text,
+  Button,
+  View,
+  StyleSheet,
+  TextInput,
+  Image,
+  AsyncStorage,
+} from "react-native";
 import axios from "axios";
 export default function Signin({ navigation, route }) {
   const [isLogin, setIsLogin] = useState(false); // 로그인 핸들링
@@ -25,7 +33,7 @@ export default function Signin({ navigation, route }) {
       />
       <Button
         style={styles.appButtonContainer}
-        title={isLogin ? "로그인 되었습니다" : "Login"}
+        title={"Login"}
         onPress={() => {
           const data = JSON.stringify({
             email: email,
@@ -43,12 +51,13 @@ export default function Signin({ navigation, route }) {
 
           axios(config)
             .then((response) => {
-              console.log(
-                "로그인 성공 토큰값: ",
-                response.data.token,
-                "전체 response data:",
-                response.data
-              );
+              // console.log(
+              //   "로그인 성공 토큰값: ",
+              //   response.data.token,
+              //   "전체 response data:",
+              //   response.data
+              // );
+              AsyncStorage.setItem("isLoggedIn", "1");
               navigation.navigate("Tab");
             })
             .catch((error) => {
