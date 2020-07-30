@@ -1,4 +1,4 @@
-const { notes, notes_flavors } = require('../../models');
+const { notes, notes_flavors, flavors } = require('../../models');
 
 module.exports = {
   get: (req, res) => {
