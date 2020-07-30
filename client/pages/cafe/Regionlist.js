@@ -7,10 +7,22 @@ function Regionlist({ navigation }) {
 
   const [region_id, Setregion_id] = useState("");
   const [city, Setcity] = useState("");
+  const [test, Settest] = useState("");
+
+  const getAllData = () => {
+    axios
+      .get("http://13.125.247.226:3001/cafes")
+      .then((res) => {
+        JSON.stringify(res.data);
+      })
+      .then((data) => {
+        console.log(data);
+      });
+  };
 
   const getRegionList = () => {
     axios
-      .get("http://localhost:3001/cafes/regions")
+      .get("http://13.125.247.226:3001/cafes")
       .then((res) => {
         return JSON.stringify(res.data);
       })
@@ -28,11 +40,13 @@ function Regionlist({ navigation }) {
 
   useEffect(() => {
     getRegionList();
+    getAllData();
   });
   return (
     <View style={styles.container}>
       <Text style={styles.textstyle}>어떤 지역의 카페정보가 궁금하신가요?</Text>
       {/* 각각의 지역 목록을 버튼화하여 선택시 해당 지역의 카페 목록으로 이동합니다 */}
+      <Text>{test}</Text>
       <Button
         title={city}
         style={styles.textstyle}
