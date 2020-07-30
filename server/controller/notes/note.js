@@ -1,4 +1,4 @@
-const { notes, notes_flavors } = require('../../models');
+const { notes, notes_flavors, flavors } = require('../../models');
 
 module.exports = {
   get: (req, res) => {
@@ -26,6 +26,17 @@ module.exports = {
           flavor.push(0)
         }
         flavor.push(data2[i].dataValues.flavor_id);
+        // for(let j=0; j < flavor.length; j++){
+        //   flavors
+        //   .findOne({
+        //     where:{
+        //       id: flavor[j]
+        //     }
+        //   })
+        //   .then(data =>{
+        //     console.log('데이터',data.dataValues)
+        //   })
+        // }
       }
 
       let flavorData = { 'flavor': flavor };

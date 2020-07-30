@@ -30,6 +30,7 @@ module.exports = {
       .then(() => {
         res.status(200).json(totalData);//reviews까지 들어간 한 카페의 전체 데이터
       })
+      //res.status(200).json(cafeData)//리뷰 안 담은 버전
       .catch((err) => {
         res.status(404).send(err);
       })
