@@ -25,7 +25,7 @@ export default function Signin({ navigation }) {
         title="커피콩콩콩"
         style={styles.input}
         onPress={() => {
-          navigation.navigate("Addnote");
+          navigation.navigate("Notelist");
         }}
       />
     </View>
