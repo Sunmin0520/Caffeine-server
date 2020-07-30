@@ -1,12 +1,13 @@
 //test
 import React, { useState } from "react";
 import { Text, Button, View, StyleSheet, TextInput } from "react-native";
+import FacebookLogin from "./FackbookLogin";
 
 export default function UserInfo({ navigation }) {
   return (
     <View style={styles.container}>
       <Button title="Google 로그인"></Button>
-      <Button title="Fackbook 로그인"></Button>
+      <FacebookLogin />
       <Button
         title="등록된 이메일로 로그인"
         onPress={() => {
