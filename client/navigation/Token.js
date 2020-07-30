@@ -3,14 +3,11 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Notelist from "../pages/notes/Notelist";
 import Noteinfo from "../pages/notes/Noteinfo";
 import Modifynote from "../pages/notes/Modifynote";
-import Signin from "../pages/user/Signin";
-import Signup from "../pages/user/Signup";
 import Main from "../pages/user/Main";
 import Tabs from "./Tabs";
-import UserInfo from "../pages/user/UserInfo";
 import Addnote from "../pages/notes/Addnote";
 import Regionlist from "../pages/cafe/Regionlist";
-
+import UserInfo from "../pages/user/UserInfo";
 const Stack = createStackNavigator();
 
 export default () => (
@@ -31,11 +28,9 @@ export default () => (
       headerBackTitleVisible: false,
     }}
   >
-    <Stack.Screen name="UserInfo" component={UserInfo} />
-    <Stack.Screen name="Signin" component={Signin} />
-    <Stack.Screen name="Signup" component={Signup} />
-    <Stack.Screen name="Main" component={Main} />
+    {/* <Stack.Screen name="Main" component={Main} /> */}
     <Stack.Screen name="Tab" component={Tabs} />
+    <Stack.Screen name="UserInfo" component={UserInfo} />
     <Stack.Screen name="Notelist" component={Notelist} />
     <Stack.Screen name="Noteinfo" component={Noteinfo} />
     <Stack.Screen name="Modifynote" component={Modifynote} />
