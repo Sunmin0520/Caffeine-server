@@ -36,18 +36,26 @@ const Addcafe = ({ route, navigation }) => {
   const postCafeCall = () => {
     axios
       .post(
-        "http://localhost:3001/cafes/:region_id/cafe",
+        "http://13.125.247.226:3001/cafes",
         {
           name: name,
           address: address,
           sell_beans: sell_beans,
           instagram_account: instagram_account,
         },
+        {
+          headers: {
+            Authorization: `Bearer ${value}`,
+          },
+          params: {
+            cafe_id: cafe_id,
+          },
+        },
         { withCredentials: true }
       ) // Serverside진행후 수정예정입니다.
       .then((res) => {
         //status 200 ok
-        alert(JSON.stringify(res.data)); // 수정예정
+        console.log(res);
       })
       .catch(function (error) {
         console.log(error); //401{result:"token expired"} 수정예정
