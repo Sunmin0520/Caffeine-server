@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, Text, View, Button, AsyncStorage } from "react-native";
 import axios from "axios";
 import * as Linking from "expo-linking";
 import StarRating from "react-native-star-rating";
@@ -11,49 +11,55 @@ const Cafeinfo = ({ route, navigation }) => {
   const city = route.params.city;
   const user_id = route.params.user_id;
 
-  const [name, Setname] = useState("");
-  const [address, Setaddress] = useState("");
-  const [sell_beans, Setsell_beans] = useState("");
-  const [instagram_account, Setinstagram_account] = useState("");
-  const [rating_average, Setrating_average] = useState(0);
-  const [review, Setreview] = useState("");
-  const [rating, Setrating] = useState(0);
+  const [name, Setname] = useState(null);
+  const [address, Setaddress] = useState(null);
+  const [sell_beans, Setsell_beans] = useState(null);
+  const [instagram_account, Setinstagram_account] = useState(null);
+  const [rating_average, Setrating_average] = useState(null);
+  const [test, Settest] = useState(null);
+  const [review, Setreview] = useState(null);
 
-  const getCafeinfoCall = () => {
+  const getCafeinfoCall = async () => {
+    const value = await AsyncStorage.getItem("userToken");
     axios
-      .get(`http://localhost:3001/cafes/${region_id}/${cafe_id}`)
-      .then((res) => {
-        return JSON.stringify(res.data);
+      .get(`http://13.125.247.226:3001/cafes/${cafe_id}`, {
+        headers: {
+          Authorization: `Bearer ${value}`,
+        },
       })
-      .then((data) => {
+      .then((res) => {
+        console.log("data", res.data.review);
         return (
-          Setname(data.name),
-          Setaddress(data.address),
-          Setsell_beans(data.Setsell_beans),
-          Setinstagram_account(data.instagram_account),
-          Setrating_average(data.rating_average)
+          Settest(res.data),
+          Setname(res.data.name),
+          Setaddress(res.data.address),
+          Setsell_beans(res.data.Setsell_beans),
+          Setinstagram_account(res.data.instagram_account),
+          Setrating_average(res.data.rating_average),
+          Setreview(
+            res.data.review.map((result) => {
+              return (
+                <View key={result.text}>
+                  <Text>{result.text}</Text>
+                  <StarRating
+                    disabled={true}
+                    maxStars={5}
+                    rating={result.rating}
+                    fullStarColor={"#FEBF34"}
+                  />
+                </View>
+              );
+            })
+          )
         );
       })
       .catch(function (error) {
         console.log(error); //401{result:"token expired"} 수정예정
       });
   };
-
-  const getReview = () => {
-    axios
-      .get(`http://localhost:3001/cafes/${region_id}/${cafe_id}`) //리뷰url로 수정 예정
-      .then((res) => {
-        return JSON.stringify(res.data);
-      })
-      .then((data) => {
-        return Setreview(data.text), Setrating(data.rating);
-      });
-  };
-
   useEffect(() => {
     getCafeinfoCall();
-    getReview();
-  });
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -74,9 +80,8 @@ const Cafeinfo = ({ route, navigation }) => {
         rating={rating_average}
         fullStarColor={"#FEBF34"}
       />
-      <Text>{sell_beans}</Text>
-      <Text>{review}</Text>
-      <Text>{rating}</Text>
+      {review}
+
       <Button
         title="리뷰남기기"
         onPress={() => {

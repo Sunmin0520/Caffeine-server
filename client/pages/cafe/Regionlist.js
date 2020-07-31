@@ -1,25 +1,36 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, AsyncStorage } from "react-native";
 import axios from "axios";
 
-function Regionlist({ navigation }) {
+function Regionlist({ route, navigation }) {
   //DB에 있는 지역리스트를 가져옵니다.
+  const [city, Setcity] = useState(null);
 
-  const [region_id, Setregion_id] = useState("");
-  const [city, Setcity] = useState("");
-
-  const getRegionList = () => {
+  const getRegionList = async () => {
+    const value = await AsyncStorage.getItem("userToken");
     axios
-      .get("http://localhost:3001/cafes/regions")
-      .then((res) => {
-        return JSON.stringify(res.data);
+      .get("http://13.125.247.226:3001/cafes", {
+        headers: {
+          Authorization: `Bearer ${value}`,
+        },
       })
-      .then((data) => {
-        return data.map((result) => {
-          key = result.id;
-          Setregion_id(result.id);
-          Setcity(result.name);
-        });
+      .then((res) => {
+        Setcity(
+          res.data.map((result) => {
+            return (
+              <Button
+                key={result.name}
+                title={result.name}
+                onPress={() => {
+                  navigation.navigate("Region", {
+                    region_id: result.id,
+                    city: result.name,
+                  });
+                }}
+              />
+            );
+          })
+        );
       })
       .catch(function (error) {
         console.log(error); //401{result:"token expired"} 수정예정
@@ -28,21 +39,12 @@ function Regionlist({ navigation }) {
 
   useEffect(() => {
     getRegionList();
-  });
+  }, []);
+
   return (
     <View style={styles.container}>
       <Text style={styles.textstyle}>어떤 지역의 카페정보가 궁금하신가요?</Text>
-      {/* 각각의 지역 목록을 버튼화하여 선택시 해당 지역의 카페 목록으로 이동합니다 */}
-      <Button
-        title={city}
-        style={styles.textstyle}
-        onPress={() => {
-          navigation.navigate("Region", {
-            region_id: region_id,
-            city: city,
-          });
-        }}
-      />
+      {city}
     </View>
   );
 }
