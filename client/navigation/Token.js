@@ -8,6 +8,11 @@ import Tabs from "./Tabs";
 import Addnote from "../pages/notes/Addnote";
 import Regionlist from "../pages/cafe/Regionlist";
 import UserInfo from "../pages/user/UserInfo";
+import Region from "../pages/cafe/Region";
+import Cafeinfo from "../pages/cafe/Cafeinfo";
+import Addreview from "../pages/cafe/Addreview";
+import Addcafe from "../pages/cafe/Addcafe";
+
 const Stack = createStackNavigator();
 
 export default () => (
@@ -36,5 +41,9 @@ export default () => (
     <Stack.Screen name="Modifynote" component={Modifynote} />
     <Stack.Screen name="Addnote" component={Addnote} />
     <Stack.Screen name="Regionlist" component={Regionlist} />
+    <Stack.Screen name="Region" component={Region} />
+    <Stack.Screen name="Cafeinfo" component={Cafeinfo} />
+    <Stack.Screen name="Addreview" component={Addreview} />
+    <Stack.Screen name="Addcafe" component={Addcafe} />
   </Stack.Navigator>
 );

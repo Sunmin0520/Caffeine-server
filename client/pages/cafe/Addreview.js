@@ -1,5 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Button, TextInput } from "react-native";
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TextInput,
+  AsyncStorage,
+} from "react-native";
 import axios from "axios";
 import StarRating from "react-native-star-rating";
 
@@ -8,21 +15,23 @@ const Addreview = ({ route, navigation }) => {
   const cafe_id = route.params.cafe_id; //Cafeinfo에서 선택한 카페의 ID입니다.
   const user_id = route.params.user_id;
 
-  const [review, onChangereview] = useState("리뷰를 작성해주세요");
+  const [review, onChangereview] = useState("");
   const [rating, onChangeRating] = useState(route.params.rating);
-  const postReviewCall = () => {
+  const postReviewCall = async () => {
+    const value = await AsyncStorage.getItem("userToken");
     axios
-      .post(
-        `http://localhost:3001/cafes/:region_id/:cafe_id`,
-        {
+      .post(`http://13.125.247.226:3001/cafes/${cafe_id}`, {
+        data: {
           text: review,
           rating: rating,
+          headers: {
+            Authorization: `Bearer ${value}`,
+          },
         },
-        { withCredentials: true }
-      ) // Serverside진행후 수정예정입니다.
+      }) // Serverside진행후 수정예정입니다.
       .then((res) => {
         //status 200 ok
-        alert(JSON.stringify(res.data)); // 수정예정
+        console.log(res);
       })
       .catch(function (error) {
         console.log(error); //401{result:"token expired"} 수정예정
@@ -39,6 +48,7 @@ const Addreview = ({ route, navigation }) => {
         fullStarColor={"#FEBF34"}
       />
       <TextInput
+        style={styles.textstyle}
         placeholder={"리뷰를 작성해주세요"}
         onChangeText={(text) => onChangereview(text)}
         value={review}
