@@ -22,7 +22,7 @@ module.exports = {
       .then(data2 => {
         let review = [];
         for(let i=0; i < data2.length; i++){
-          review.push({text: data2[i].dataValues.text, rating:data2[i].dataValues.rating});
+          review.push({id: data2[i].dataValues.id, text: data2[i].dataValues.text, rating:data2[i].dataValues.rating, date:data2[i].dataValues.createdAt});
         }
         let reviewData = {'review': review}
         totalData = Object.assign({}, cafeData, reviewData);
