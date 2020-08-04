@@ -12,5 +12,6 @@ router.post('/:cafe_id', auth, cafesController.addReview.post);
 router.get('/rating/:cafe_id', auth, cafesController.avgRating.get);
 router.post('/bookmark/:cafe_id', auth, cafesController.addBookmark.post);
 router.get('/bookmark/all', auth, cafesController.bookmark.get);
+router.delete('/bookmark/:bookmark_id', auth, cafesController.deleteBookmark.delete);
 
 module.exports = router;

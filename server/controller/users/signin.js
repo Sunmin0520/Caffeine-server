@@ -16,7 +16,7 @@ module.exports = {
         res.status(401).json({error:'비밀번호 틀림'})
       }
       let payload = {id: user.dataValues.id, username: user.dataValues.username}
-      const token = jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: '24h'});
+      const token = jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: '30d'});
       res.status(200).json({
         id:user.dataValues.id, token:token
       })
