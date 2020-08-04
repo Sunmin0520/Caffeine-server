@@ -21,7 +21,9 @@ module.exports = {
         }
       },
       address: {
-        type: Sequelize.STRING(1234)
+        allowNull: false,
+        type: Sequelize.STRING(1234),
+        unique: true
       },
       sell_beans: {
         type: Sequelize.BOOLEAN
