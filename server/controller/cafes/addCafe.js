@@ -2,25 +2,28 @@ const { cafes } = require('../../models');
 
 module.exports = {
   post: (req,res) => {
-    let name = req.body.name;
-    let address = req.body.address;
-    let region_id = req.body.region_id;
-    let sell_beans = req.body.sell_beans; // true(1) or false(0)
-    let instagram_account = req.body.instagram_account;
+    const { name, address, region_id, sell_beans, instagram_account } = req.body;
 
     cafes
-    .create({
-      name: name,
-      address: address,
-      region_id: region_id,
-      sell_beans: sell_beans,
-      instagram_account: instagram_account
+    .findOrCreate({
+      where: { address: address},
+      defaults: {
+        name: name,
+        region_id: region_id,
+        sell_beans: sell_beans,
+        instagram_account: instagram_account
+      }
     })
-    .then((data) => {
+    .then(async([cafe, created]) => {
+      if(!created){
+        res.status(409).json({ result: "cafe already exists in db" })
+      }
+      const data = await cafe.get({plain: true});
       res.status(201).json(data);
     })
-    .catch(err => {
-      res.status(404).send(err);
-    })        
+    .catch((err) => {
+      res.status(500).send(err);
+    })
   }
 }
+
