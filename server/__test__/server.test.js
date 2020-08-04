@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 'use strict';
 
 const chai = require('chai');
@@ -16,8 +18,7 @@ const notesFixture = require('./fixtures/notes.json');
 
 describe('Bare Minimum Requirements - user', () => {
   beforeEach(async () => {
-    // Setup/TearDown : Check Fixtures folder
-    //await users.destroy({ where: {}, truncate: true });
+    await users.destroy({ where: {}, truncate: true });
     await users.create(usersFixture[0]);
   })
 
@@ -140,15 +141,14 @@ describe('should be opended server', () => {
 
 
 
-///notes
+//notes//
 describe('Bare Minimum Requirements - notes', () => {
   beforeEach(async () => {
     // Setup/TearDown : Check Fixtures folder
-    //await notes.destroy({ where: {}, truncate: { cascase: true } });
+    await notes.destroy({ where: {}, truncate: { cascase: true } });
     await notes.create(notesFixture[0]);
   })
 
-  
   describe('GET /notes', () => {
     it('should respond with notes list', done => {
       chai
@@ -168,9 +168,6 @@ describe('Bare Minimum Requirements - notes', () => {
               ])
             });
           } 
-          // else {
-          //   expect(res).to.have.status(204)
-          // }
           done();
         })
     })
@@ -181,7 +178,7 @@ describe('Bare Minimum Requirements - notes', () => {
       chai
         .request(app)
         .post('/notes')
-        .set({ "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoic3VubWluIiwiaWF0IjoxNTk2NTE3ODE0LCJleHAiOjE1OTkxMDk4MTR9._ReVld2q13g6GkOd8uMvA-PMzn8cXGEo36tiWkp4Y4g` })
+        .set({ "Authorization": `Bearer ${process.env.TEST_TOKEN}` })
         .send({
           name: 'finca',
           mall:'monmouth'
@@ -201,7 +198,31 @@ describe('Bare Minimum Requirements - notes', () => {
     it('should respond note info to modify note', done => {
       chai
       .request(app)
-      .post('/notes')
+      .put('/notes/148')
+      .set({ "Authorization": `Bearer ${process.env.TEST_TOKEN}`})
+      .send({
+        user_id:'11',
+        name:'espresso special',
+        mall:'tapcoffee'
+      })
+      .end((err, res) => {
+        if(err) {
+          done(err);
+          return;
+        }
+        expect(res).to.have.status(200);
+        expect(res.body.result).to.equal('note modified');
+        done();
+      })
+    })
+  })
+
+  describe('DELETE /notes', () => {
+    it('should delete note info', done => {
+      chai
+      .request(app)
+      .delete('/notes/141')
+      .set({ "Authorization": `Bearer ${process.env.TEST_TOKEN}`})
       .send({
         name:'espresso special',
         mall:'tapcoffee'
@@ -212,7 +233,7 @@ describe('Bare Minimum Requirements - notes', () => {
           return;
         }
         expect(res).to.have.status(200);
-        expect(res.body).to.equal('note modified');
+        expect(res.body.result).to.equal('note deleted');
         done();
       })
     })
