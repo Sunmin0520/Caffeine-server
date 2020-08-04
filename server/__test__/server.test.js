@@ -180,9 +180,11 @@ describe('Bare Minimum Requirements - notes', () => {
     it('should respond note info to add note', done => {
       chai
         .request(app)
-        .post('/notes')///?토큰이 없어서 접근 못함
+        .post('/notes')
+        .set({ "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJuYW1lIjoic3VubWluIiwiaWF0IjoxNTk2NTE3ODE0LCJleHAiOjE1OTkxMDk4MTR9._ReVld2q13g6GkOd8uMvA-PMzn8cXGEo36tiWkp4Y4g` })
         .send({
           name: 'finca',
+          mall:'monmouth'
         })
         .end((err, res) => {
           if (err) {
@@ -190,17 +192,29 @@ describe('Bare Minimum Requirements - notes', () => {
             return;
           }
           expect(res).to.have.status(201);
-          expect(res.body).has.all.keys([
-            'id',
-            'name'
-          ]);
           done();
         });
-
     });
+  })
 
-
-
-})
-
+  describe('PUT /notes', () => {
+    it('should respond note info to modify note', done => {
+      chai
+      .request(app)
+      .post('/notes')
+      .send({
+        name:'espresso special',
+        mall:'tapcoffee'
+      })
+      .end((err, res) => {
+        if(err) {
+          done(err);
+          return;
+        }
+        expect(res).to.have.status(200);
+        expect(res.body).to.equal('note modified');
+        done();
+      })
+    })
+  })
 })
