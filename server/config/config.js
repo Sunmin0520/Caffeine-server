@@ -19,8 +19,8 @@ require('dotenv').config();
   // };
   const test = {
     username: "root",
-    password: process.env.DATABASE_PASSWORD,
-    database: "caffeine",
+    password: process.env.DATABASE_PASSWORD1,
+    database: "test_caffeine",
     host: "127.0.0.1",
     dialect: "mysql",
     logging: false

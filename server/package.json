@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node ./node_modules/.bin/mocha __test__ --exit --timeout 20000 --exit",
     "start": "nodemon app.js"
   },
   "author": "",
@@ -24,7 +24,10 @@
     "sequelize": "^6.3.3"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "eslint": "^7.4.0",
+    "mocha": "^8.1.0",
     "sequelize-cli": "^6.2.0"
   }
 }
