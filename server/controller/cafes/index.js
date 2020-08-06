@@ -7,6 +7,5 @@ module.exports = {
   avgRating: require('./avgRating'),
   addBookmark: require('./addBookmark'),
   bookmark: require('./bookmark'),
-  deleteBookmark: require('./deleteBookmark'),
-  //uploadImage: require('./uploadImage')
+  deleteBookmark: require('./deleteBookmark')
 }
