@@ -6,6 +6,7 @@ const { cafesController } = require('../controller');
 
 router.get('/', auth, cafesController.regionList.get);
 router.get('/region/:region_id', auth, cafesController.cafeList.get);
+router.get('/allcafes', auth, cafesController.cafeListAll.get);
 router.post('/', auth, cafesController.addCafe.post);
 router.get('/:cafe_id', auth, cafesController.cafe.get);
 router.post('/:cafe_id', auth, cafesController.addReview.post);
