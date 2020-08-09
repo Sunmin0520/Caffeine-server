@@ -11,11 +11,10 @@ module.exports = {
       cafe_id: cafe_id,
     })
     .then((data) => {
-      console.log('북마크데이터',data)
       res.status(201).json(data);
     })
     .catch((err) => {
-      res.status(404).send(err);
+      res.status(400).json({ result: 'invalid info for saving bookmark' });
     })
   }
 }

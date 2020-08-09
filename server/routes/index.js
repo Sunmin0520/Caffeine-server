@@ -245,7 +245,7 @@
  *            description: "result: cannot found note"
  */
 
- /**
+/**
  * @swagger
  *  paths:
  *    /notes:
@@ -304,7 +304,7 @@
  *                    type: array
  *                    items:
  *                     type: integer
- *          422:
+ *          400:
  *            description: "result: invalid info for saving note"
  */
 
@@ -433,7 +433,7 @@
  *          401:
  *            description: "result: token expired"
  * 
- *          422:
+ *          404:
  *            description: "result: cannot found flavors"
  */
 
@@ -464,7 +464,7 @@
  *          401:
  *            description: "result: token expired"
  * 
- *          422:
+ *          404:
  *            description: "result: cannot found regions"
  */
 
@@ -511,11 +511,11 @@
  *          401:
  *            description: "result: token expired"
  * 
- *          422:
- *            description: "result: cannot found cafe"
+ *          404:
+ *            description: "result: cannot found region"
  */
 
- /**
+/**
  * @swagger
  *  paths:
  *    /cafes/allcafes:
@@ -542,55 +542,8 @@
  *          401:
  *            description: "result: token expired"
  * 
- *          422:
+ *          404:
  *            description: "result: cannot found cafes"
- */
-
-/**
- * @swagger
- *  paths:
- *    /cafes/region/{region_id}:
- *      get:
- *        tags:
- *        - "Cafes"
- *        summary: "한 지역의 카페 목록"
- *        description: ""
- *        consumes:
- *        - "application/json"
- *        produces:
- *        - "application/json"
- *        parameters:
- *          - in: path
- *            name: region_id
- *            schema:
- *              type: integer
- *            required: true
- *        
- *        responses:
- *          200:
- *            description: "한 지역의 카페 목록"
- *            schema:
- *              properties: 
- *                id:
- *                  type: integer
- *                name:
- *                  type: string
- *                region_id:
- *                 type: integer
- *                address:
- *                  type: string
- *                sell_beans:
- *                  type: boolean
- *                instagram_account:
- *                  type: string
- *                rating_average:
- *                  type: string
- *              
- *          401:
- *            description: "result: token expired"
- * 
- *          422:
- *            description: "result: cannot found cafe"
  */
 
 /**
@@ -688,7 +641,7 @@
  *                    type: string
  *                instagram_account:
  *                    type: string
- *          422:
+ *          400:
  *            description: "result: invalid info for saving cafe"
  */
 
@@ -736,7 +689,7 @@
  *                rating:
  *                  type: integer
 
- *          422:
+ *          400:
  *            description: "result: invalid info for saving review"
  */
 
@@ -771,7 +724,7 @@
  *          401:
  *            description: "result: token expired"
  * 
- *          422:
+ *          404:
  *            description: "result: cannot calculated rating"
  */
 
@@ -806,7 +759,7 @@
  *          401:
  *            description: "result: token expired"
  * 
- *          422:
+ *          404:
  *            description: "result: cannot found bookmarks"
  */
 
@@ -852,14 +805,14 @@
  *                cafe_id:
  *                  type: integer
 
- *          422:
+ *          400:
  *            description: "result: invalid info for saving bookmark"
  */
 
 /**
  * @swagger
  *  paths:
- *    /cafes/bookmark/{note_id}:
+ *    /cafes/bookmark/{bookmark_id}:
  *      delete:
  *        tags:
  *        - "Cafes"

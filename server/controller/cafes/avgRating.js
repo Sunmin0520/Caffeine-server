@@ -23,7 +23,7 @@ module.exports = {
         res.status(200).send(JSON.stringify(Math.round(avrRating)));
       })
       .catch((err) => {
-        res.status(404).send(err);
+        res.status(404).json({ result: 'cannot calculate rating' });
       })
   }
 }

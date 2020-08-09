@@ -19,10 +19,10 @@ module.exports = {
           }
         })
         .then(() => {
-          res.status(200).json({result: 'bookmark deleted'})
+          res.status(200).json({ result: 'bookmark deleted' })
         })
       } else {
-        res.status(404).json({ result: 'cannot found bookmark'});
+        res.status(422).json({ result: 'cannot found bookmark to delete' });
       }
     })
   }
