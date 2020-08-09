@@ -25,12 +25,11 @@ module.exports = {
             id:note_id
           }
         })
-
         .then(() => {
-          res.status(200).json({ result: 'note deleted'})
+          res.status(200).json({ result: 'note deleted'});
         })
       } else {
-        res.status(404).json({ result: 'cannot found note'});
+        res.status(422).json({ result: 'cannot found note to delete'});
       }
     })
   }

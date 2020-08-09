@@ -18,7 +18,7 @@ module.exports = {
       res.status(201).json(data);
     })
     .catch((err) => {
-      res.status(404).send(err);
+      res.status(400).send({ result: 'invalid info for saving review'});
     })
   }
 }

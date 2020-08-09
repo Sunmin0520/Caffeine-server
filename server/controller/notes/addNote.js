@@ -37,7 +37,7 @@ module.exports = {
         )
     })
     .catch(err => {
-      res.status(404).send(err);
+      res.status(400).json({ result: 'invalid info for saving note'});
     })
   },
 }

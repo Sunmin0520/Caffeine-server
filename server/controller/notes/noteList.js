@@ -9,10 +9,10 @@ module.exports = {
         }
       })
       .then((data) => {
+        if(data.length === 0){
+          res.status(422).json({ result: 'cannot found notes for the user' });
+        }
         res.status(200).json(data);
-      })
-      .catch((err) => {
-        res.status(400).send(err);
       })
   }
 }

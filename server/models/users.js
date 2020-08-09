@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  const users = sequelize.define( //models/users를 정의
+  const users = sequelize.define( 
     'users',
     {
       username: {
@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       email: {
         type: DataTypes.STRING,
-        unique: true // 이미 등록된 이메일로 새롭게 가입하는 사용자가 없도록
+        unique: true 
       },
       password: {
         type: DataTypes.STRING,
