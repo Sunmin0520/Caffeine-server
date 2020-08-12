@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       name: {
         type: DataTypes.STRING,
-        allowNull: false //null로는 db에 들어갈 수 없도록 설정
+        allowNull: false 
       },
       user_id: {
         type: DataTypes.INTEGER,

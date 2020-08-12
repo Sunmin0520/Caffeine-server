@@ -1,4 +1,4 @@
-const { notes, notes_flavors, flavors } = require('../../models');
+const { notes, notes_flavors } = require('../../models');
 
 module.exports = {
   get: (req, res) => {
@@ -35,7 +35,7 @@ module.exports = {
         res.status(200).json(totalData);
       })
       .catch((err) => 
-        res.status(404).send(err));
+        res.status(422).json({ result: 'cannot found note' }));
       })
     }
 }

@@ -11,7 +11,7 @@ module.exports = {
       }
     })
     .then((data) => {
-      let cafeData = data.dataValues;//reviews를 제외한 한 카페의 데이터들
+      let cafeData = data.dataValues;
 
       reviews
       .findAll({
@@ -28,11 +28,10 @@ module.exports = {
         totalData = Object.assign({}, cafeData, reviewData);
       })
       .then(() => {
-        res.status(200).json(totalData);//reviews까지 들어간 한 카페의 전체 데이터
+        res.status(200).json(totalData);
       })
-      //res.status(200).json(cafeData)//리뷰 안 담은 버전
       .catch((err) => {
-        res.status(404).send(err);
+        res.status(422).json({ result: 'cannot found cafe' });
       })
     })
   }

@@ -2,7 +2,7 @@ const { notes,notes_flavors } = require('../../models');
 
 module.exports = {
   put: (req,res) => {
-    let note_id = req.params.note_id //수정할 노트의 id
+    let note_id = req.params.note_id 
 
     let name = req.body.name;
     let origin = req.body.origin;
@@ -18,13 +18,13 @@ module.exports = {
     })
     .then(() =>{
       notes_flavors
-      .destroy({ //수정 전에 기록되어 있던 flavor 정보를 삭제
+      .destroy({ 
         where:{ note_id:note_id },
       })
     })
 
     notes
-    .update({ //수정을 원하는 내용으로 업데이트
+    .update({ 
       name: name,
       origin: origin,
       mall: mall,
@@ -51,10 +51,9 @@ module.exports = {
           array
         ,{ returning: true }
         )
-    
     })
     .catch((err) => {
-      res.status(404).send(err)
+      res.status(422).json({ result: 'invalid info for modifying note' })
     })
   }
 }
