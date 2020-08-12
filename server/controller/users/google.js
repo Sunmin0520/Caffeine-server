@@ -23,19 +23,20 @@ module.exports = {
           } else {
             token = await findGoogleUser(payload);//이메일이 찾아진다 -> db와 비교
           }
-          return res.status(201).json({
-            user_id: findUser.dataValues.id,
+          return res.status(201).cookie('token',token)
+          .json({
+            userId: findUser.dataValues.id,
             token: token,
             isOauth: 1,
             autoLogin: 0,
           });
         } catch (err) {
-          res.status(400).send('로그인을 해주세요.');
+          res.status(400).send('siginin please');
         }
       };
       verify();
     } catch(err) {
-      res.status(400).send('로그인을 해주세요.');
+      res.status(404).send('signin please');
     }
   },
 };

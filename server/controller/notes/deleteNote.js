@@ -1,4 +1,4 @@
-const { notes } = require('../../models');
+const { notes, notes_flavors } = require('../../models');
 
 module.exports = {
   delete: (req,res) => {
@@ -12,12 +12,20 @@ module.exports = {
     })
     .then((data) => {
       if(data){
+        notes_flavors
+        .destroy({
+          where: {
+            note_id: note_id
+          }
+        })
+
         notes
         .destroy({
           where: { 
             id:note_id
           }
         })
+
         .then(() => {
           res.status(200).json({ result: 'note deleted'})
         })
