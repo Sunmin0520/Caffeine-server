@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       address:{
-        type: DataTypes.STRING(1234)
+        type: DataTypes.STRING(1234),
+        unique: true
       },
       sell_beans:{
         type: DataTypes.BOOLEAN
