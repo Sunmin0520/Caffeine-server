@@ -34,7 +34,7 @@ module.exports = {
         }
       };
       verify();
-    } catch {
+    } catch(err) {
       res.status(400).send('로그인을 해주세요.');
     }
   },
