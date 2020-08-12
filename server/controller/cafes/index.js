@@ -4,5 +4,7 @@ module.exports = {
   cafe: require('./cafe'),
   addCafe: require('./addCafe'),
   addReview: require('./addReview'),
-  avgRating: require('./avgRating')
+  avgRating: require('./avgRating'),
+  addBookmark: require('./addBookmark'),
+  bookmark: require('./bookmark')
 }
